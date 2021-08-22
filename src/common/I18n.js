@@ -2,7 +2,7 @@ class I18n {
   constructor({ locale, translations }) {
     this.locale = locale;
     this.translations = translations;
-    this.fallbackLocale = "en";
+    this.fallbackLocale = "pt-br";
   }
 
   t(str) {
