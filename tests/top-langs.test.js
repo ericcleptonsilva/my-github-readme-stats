@@ -1,4 +1,3 @@
-require("@testing-library/jest-dom");
 const axios = require("axios");
 const MockAdapter = require("axios-mock-adapter");
 const topLangs = require("../api/top-langs");

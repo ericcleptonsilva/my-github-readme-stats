@@ -1,17 +1,19 @@
-require("@testing-library/jest-dom");
 const renderWakatimeCard = require("../src/cards/wakatime-card");
 
 const { wakaTimeData } = require("./fetchWakatime.test");
 
 describe("Test Render Wakatime Card", () => {
   it("should render correctly", () => {
-    const card = renderWakatimeCard(wakaTimeData.data);
+    const card = renderWakatimeCard(wakaTimeData.data, { locale: "en" });
 
     expect(card).toMatchSnapshot();
   });
 
   it("should render correctly with compact layout", () => {
-    const card = renderWakatimeCard(wakaTimeData.data, { layout: "compact" });
+    const card = renderWakatimeCard(wakaTimeData.data, {
+      layout: "compact",
+      locale: "en",
+    });
 
     expect(card).toMatchSnapshot();
   });
@@ -28,9 +30,14 @@ describe("Test Render Wakatime Card", () => {
   });
 
   it("should render without rounding", () => {
-    document.body.innerHTML = renderWakatimeCard(wakaTimeData.data, { border_radius: "0" });
+    document.body.innerHTML = renderWakatimeCard(wakaTimeData.data, {
+      border_radius: "0",
+      locale: "en",
+    });
     expect(document.querySelector("rect")).toHaveAttribute("rx", "0");
-    document.body.innerHTML = renderWakatimeCard(wakaTimeData.data, { });
+    document.body.innerHTML = renderWakatimeCard(wakaTimeData.data, {
+      locale: "en",
+    });
     expect(document.querySelector("rect")).toHaveAttribute("rx", "4.5");
   });
 });

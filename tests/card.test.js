@@ -1,4 +1,3 @@
-require("@testing-library/jest-dom");
 const cssToObject = require("css-to-object");
 const Card = require("../src/common/Card");
 const icons = require("../src/common/icons");

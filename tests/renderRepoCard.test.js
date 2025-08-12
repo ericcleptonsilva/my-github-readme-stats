@@ -1,4 +1,3 @@
-require("@testing-library/jest-dom");
 const cssToObject = require("css-to-object");
 const renderRepoCard = require("../src/cards/repo-card");
 
@@ -22,7 +21,9 @@ const data_repo = {
 
 describe("Test renderRepoCard", () => {
   it("should render correctly", () => {
-    document.body.innerHTML = renderRepoCard(data_repo.repository);
+    document.body.innerHTML = renderRepoCard(data_repo.repository, {
+      locale: "en",
+    });
 
     const [header] = document.getElementsByClassName("header");
 
@@ -45,6 +46,7 @@ describe("Test renderRepoCard", () => {
   it("should display username in title (full repo name)", () => {
     document.body.innerHTML = renderRepoCard(data_repo.repository, {
       show_owner: true,
+      locale: "en",
     });
     expect(document.getElementsByClassName("header")[0]).toHaveTextContent(
       "anuraghazra/convoychat",
@@ -52,11 +54,14 @@ describe("Test renderRepoCard", () => {
   });
 
   it("should trim description", () => {
-    document.body.innerHTML = renderRepoCard({
-      ...data_repo.repository,
-      description:
-        "The quick brown fox jumps over the lazy dog is an English-language pangram—a sentence that contains all of the letters of the English alphabet",
-    });
+    document.body.innerHTML = renderRepoCard(
+      {
+        ...data_repo.repository,
+        description:
+          "The quick brown fox jumps over the lazy dog is an English-language pangram—a sentence that contains all of the letters of the English alphabet",
+      },
+      { locale: "en" },
+    );
 
     expect(
       document.getElementsByClassName("description")[0].children[0].textContent,
@@ -67,10 +72,13 @@ describe("Test renderRepoCard", () => {
     ).toBe("English-language pangram—a sentence that contains all");
 
     // Should not trim
-    document.body.innerHTML = renderRepoCard({
-      ...data_repo.repository,
-      description: "Small text should not trim",
-    });
+    document.body.innerHTML = renderRepoCard(
+      {
+        ...data_repo.repository,
+        description: "Small text should not trim",
+      },
+      { locale: "en" },
+    );
 
     expect(document.getElementsByClassName("description")[0]).toHaveTextContent(
       "Small text should not trim",
@@ -78,10 +86,13 @@ describe("Test renderRepoCard", () => {
   });
 
   it("should render emojis", () => {
-    document.body.innerHTML = renderRepoCard({
-      ...data_repo.repository,
-      description: "This is a text with a :poop: poo emoji",
-    });
+    document.body.innerHTML = renderRepoCard(
+      {
+        ...data_repo.repository,
+        description: "This is a text with a :poop: poo emoji",
+      },
+      { locale: "en" },
+    );
 
     // poop emoji may not show in all editors but it's there between "a" and "poo"
     expect(document.getElementsByClassName("description")[0]).toHaveTextContent(
@@ -90,13 +101,16 @@ describe("Test renderRepoCard", () => {
   });
 
   it("should shift the text position depending on language length", () => {
-    document.body.innerHTML = renderRepoCard({
-      ...data_repo.repository,
-      primaryLanguage: {
-        ...data_repo.repository.primaryLanguage,
-        name: "Jupyter Notebook",
+    document.body.innerHTML = renderRepoCard(
+      {
+        ...data_repo.repository,
+        primaryLanguage: {
+          ...data_repo.repository.primaryLanguage,
+          name: "Jupyter Notebook",
+        },
       },
-    });
+      { locale: "en" },
+    );
 
     expect(queryByTestId(document.body, "primary-lang")).toBeInTheDocument();
     expect(queryByTestId(document.body, "star-fork-group")).toHaveAttribute(
@@ -105,13 +119,16 @@ describe("Test renderRepoCard", () => {
     );
 
     // Small lang
-    document.body.innerHTML = renderRepoCard({
-      ...data_repo.repository,
-      primaryLanguage: {
-        ...data_repo.repository.primaryLanguage,
-        name: "Ruby",
+    document.body.innerHTML = renderRepoCard(
+      {
+        ...data_repo.repository,
+        primaryLanguage: {
+          ...data_repo.repository.primaryLanguage,
+          name: "Ruby",
+        },
       },
-    });
+      { locale: "en" },
+    );
 
     expect(queryByTestId(document.body, "star-fork-group")).toHaveAttribute(
       "transform",
@@ -120,17 +137,23 @@ describe("Test renderRepoCard", () => {
   });
 
   it("should hide language if primaryLanguage is null & fallback to correct values", () => {
-    document.body.innerHTML = renderRepoCard({
-      ...data_repo.repository,
-      primaryLanguage: null,
-    });
+    document.body.innerHTML = renderRepoCard(
+      {
+        ...data_repo.repository,
+        primaryLanguage: null,
+      },
+      { locale: "en" },
+    );
 
     expect(queryByTestId(document.body, "primary-lang")).toBeNull();
 
-    document.body.innerHTML = renderRepoCard({
-      ...data_repo.repository,
-      primaryLanguage: { color: null, name: null },
-    });
+    document.body.innerHTML = renderRepoCard(
+      {
+        ...data_repo.repository,
+        primaryLanguage: { color: null, name: null },
+      },
+      { locale: "en" },
+    );
 
     expect(queryByTestId(document.body, "primary-lang")).toBeInTheDocument();
     expect(queryByTestId(document.body, "lang-color")).toHaveAttribute(
@@ -144,7 +167,9 @@ describe("Test renderRepoCard", () => {
   });
 
   it("should render default colors properly", () => {
-    document.body.innerHTML = renderRepoCard(data_repo.repository);
+    document.body.innerHTML = renderRepoCard(data_repo.repository, {
+      locale: "en",
+    });
 
     const styleTag = document.querySelector("style");
     const stylesObject = cssToObject(styleTag.innerHTML);
@@ -172,6 +197,7 @@ describe("Test renderRepoCard", () => {
 
     document.body.innerHTML = renderRepoCard(data_repo.repository, {
       ...customColors,
+      locale: "en",
     });
 
     const styleTag = document.querySelector("style");
@@ -194,6 +220,7 @@ describe("Test renderRepoCard", () => {
     Object.keys(themes).forEach((name) => {
       document.body.innerHTML = renderRepoCard(data_repo.repository, {
         theme: name,
+        locale: "en",
       });
 
       const styleTag = document.querySelector("style");
@@ -217,6 +244,7 @@ describe("Test renderRepoCard", () => {
     document.body.innerHTML = renderRepoCard(data_repo.repository, {
       title_color: "5a0",
       theme: "radical",
+      locale: "en",
     });
 
     const styleTag = document.querySelector("style");
@@ -240,6 +268,7 @@ describe("Test renderRepoCard", () => {
       title_color: "invalid color",
       text_color: "invalid color",
       theme: "radical",
+      locale: "en",
     });
 
     const styleTag = document.querySelector("style");
@@ -259,52 +288,70 @@ describe("Test renderRepoCard", () => {
   });
 
   it("should not render star count or fork count if either of the are zero", () => {
-    document.body.innerHTML = renderRepoCard({
-      ...data_repo.repository,
-      stargazers: { totalCount: 0 },
-    });
+    document.body.innerHTML = renderRepoCard(
+      {
+        ...data_repo.repository,
+        stargazers: { totalCount: 0 },
+      },
+      { locale: "en" },
+    );
 
     expect(queryByTestId(document.body, "stargazers")).toBeNull();
     expect(queryByTestId(document.body, "forkcount")).toBeInTheDocument();
 
-    document.body.innerHTML = renderRepoCard({
-      ...data_repo.repository,
-      stargazers: { totalCount: 1 },
-      forkCount: 0,
-    });
+    document.body.innerHTML = renderRepoCard(
+      {
+        ...data_repo.repository,
+        stargazers: { totalCount: 1 },
+        forkCount: 0,
+      },
+      { locale: "en" },
+    );
 
     expect(queryByTestId(document.body, "stargazers")).toBeInTheDocument();
     expect(queryByTestId(document.body, "forkcount")).toBeNull();
 
-    document.body.innerHTML = renderRepoCard({
-      ...data_repo.repository,
-      stargazers: { totalCount: 0 },
-      forkCount: 0,
-    });
+    document.body.innerHTML = renderRepoCard(
+      {
+        ...data_repo.repository,
+        stargazers: { totalCount: 0 },
+        forkCount: 0,
+      },
+      { locale: "en" },
+    );
 
     expect(queryByTestId(document.body, "stargazers")).toBeNull();
     expect(queryByTestId(document.body, "forkcount")).toBeNull();
   });
 
   it("should render badges", () => {
-    document.body.innerHTML = renderRepoCard({
-      ...data_repo.repository,
-      isArchived: true,
-    });
+    document.body.innerHTML = renderRepoCard(
+      {
+        ...data_repo.repository,
+        isArchived: true,
+      },
+      { locale: "en" },
+    );
 
     expect(queryByTestId(document.body, "badge")).toHaveTextContent("Archived");
 
-    document.body.innerHTML = renderRepoCard({
-      ...data_repo.repository,
-      isTemplate: true,
-    });
+    document.body.innerHTML = renderRepoCard(
+      {
+        ...data_repo.repository,
+        isTemplate: true,
+      },
+      { locale: "en" },
+    );
     expect(queryByTestId(document.body, "badge")).toHaveTextContent("Template");
   });
 
   it("should not render template", () => {
-    document.body.innerHTML = renderRepoCard({
-      ...data_repo.repository,
-    });
+    document.body.innerHTML = renderRepoCard(
+      {
+        ...data_repo.repository,
+      },
+      { locale: "en" },
+    );
     expect(queryByTestId(document.body, "badge")).toBeNull();
   });
 
@@ -334,9 +381,14 @@ describe("Test renderRepoCard", () => {
   });
   
   it("should render without rounding", () => {
-    document.body.innerHTML = renderRepoCard(data_repo.repository, { border_radius: "0" });
+    document.body.innerHTML = renderRepoCard(data_repo.repository, {
+      border_radius: "0",
+      locale: "en",
+    });
     expect(document.querySelector("rect")).toHaveAttribute("rx", "0");
-    document.body.innerHTML = renderRepoCard(data_repo.repository, { });
+    document.body.innerHTML = renderRepoCard(data_repo.repository, {
+      locale: "en",
+    });
     expect(document.querySelector("rect")).toHaveAttribute("rx", "4.5");
   });
 });

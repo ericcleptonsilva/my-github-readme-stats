@@ -1,4 +1,3 @@
-require("@testing-library/jest-dom");
 const {
   kFormatter,
   encodeHTML,

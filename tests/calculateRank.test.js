@@ -1,4 +1,3 @@
-require("@testing-library/jest-dom");
 const calculateRank = require("../src/calculateRank");
 
 describe("Test calculateRank", () => {

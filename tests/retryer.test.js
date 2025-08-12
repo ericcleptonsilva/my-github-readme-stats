@@ -1,4 +1,3 @@
-require("@testing-library/jest-dom");
 const retryer = require("../src/common/retryer");
 const { logger } = require("../src/common/utils");
 

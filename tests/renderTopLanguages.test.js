@@ -1,4 +1,3 @@
-require("@testing-library/jest-dom");
 const cssToObject = require("css-to-object");
 const fetchTopLanguages = require("../src/fetchers/top-languages-fetcher");
 const renderTopLanguages = require("../src/cards/top-languages-card");
@@ -26,7 +25,7 @@ describe("Test renderTopLanguages", () => {
   };
 
   it("should render correctly", () => {
-    document.body.innerHTML = renderTopLanguages(langs);
+    document.body.innerHTML = renderTopLanguages(langs, { locale: "en" });
 
     expect(queryByTestId(document.body, "header")).toHaveTextContent(
       "Most Used Languages",
@@ -58,6 +57,7 @@ describe("Test renderTopLanguages", () => {
   it("should hide languages when hide is passed", () => {
     document.body.innerHTML = renderTopLanguages(langs, {
       hide: ["HTML"],
+      locale: "en",
     });
     expect(queryAllByTestId(document.body, "lang-name")[0]).toBeInTheDocument(
       "javascript",
@@ -70,6 +70,7 @@ describe("Test renderTopLanguages", () => {
     // multiple languages passed
     document.body.innerHTML = renderTopLanguages(langs, {
       hide: ["HTML", "css"],
+      locale: "en",
     });
     expect(queryAllByTestId(document.body, "lang-name")[0]).toBeInTheDocument(
       "javascript",
@@ -78,7 +79,7 @@ describe("Test renderTopLanguages", () => {
   });
 
   it("should resize the height correctly depending on langs", () => {
-    document.body.innerHTML = renderTopLanguages(langs, {});
+    document.body.innerHTML = renderTopLanguages(langs, { locale: "en" });
     expect(document.querySelector("svg")).toHaveAttribute("height", "205");
 
     document.body.innerHTML = renderTopLanguages(
@@ -90,22 +91,25 @@ describe("Test renderTopLanguages", () => {
           size: 100,
         },
       },
-      {},
+      { locale: "en" },
     );
     expect(document.querySelector("svg")).toHaveAttribute("height", "245");
   });
 
   it("should render with custom width set", () => {
-    document.body.innerHTML = renderTopLanguages(langs, {});
+    document.body.innerHTML = renderTopLanguages(langs, { locale: "en" });
 
     expect(document.querySelector("svg")).toHaveAttribute("width", "300");
 
-    document.body.innerHTML = renderTopLanguages(langs, { card_width: 400 });
+    document.body.innerHTML = renderTopLanguages(langs, {
+      card_width: 400,
+      locale: "en",
+    });
     expect(document.querySelector("svg")).toHaveAttribute("width", "400");
   });
 
   it("should render default colors properly", () => {
-    document.body.innerHTML = renderTopLanguages(langs);
+    document.body.innerHTML = renderTopLanguages(langs, { locale: "en" });
 
     const styleTag = document.querySelector("style");
     const stylesObject = cssToObject(styleTag.textContent);
@@ -129,7 +133,10 @@ describe("Test renderTopLanguages", () => {
       bg_color: "252525",
     };
 
-    document.body.innerHTML = renderTopLanguages(langs, { ...customColors });
+    document.body.innerHTML = renderTopLanguages(langs, {
+      ...customColors,
+      locale: "en",
+    });
 
     const styleTag = document.querySelector("style");
     const stylesObject = cssToObject(styleTag.innerHTML);
@@ -149,6 +156,7 @@ describe("Test renderTopLanguages", () => {
     document.body.innerHTML = renderTopLanguages(langs, {
       title_color: "5a0",
       theme: "radical",
+      locale: "en",
     });
 
     const styleTag = document.querySelector("style");
@@ -169,6 +177,7 @@ describe("Test renderTopLanguages", () => {
     Object.keys(themes).forEach((name) => {
       document.body.innerHTML = renderTopLanguages(langs, {
         theme: name,
+        locale: "en",
       });
 
       const styleTag = document.querySelector("style");
@@ -187,7 +196,10 @@ describe("Test renderTopLanguages", () => {
   });
 
   it("should render with layout compact", () => {
-    document.body.innerHTML = renderTopLanguages(langs, { layout: "compact" });
+    document.body.innerHTML = renderTopLanguages(langs, {
+      layout: "compact",
+      locale: "en",
+    });
 
     expect(queryByTestId(document.body, "header")).toHaveTextContent(
       "Most Used Languages",
@@ -226,15 +238,19 @@ describe("Test renderTopLanguages", () => {
   });
 
   it("should render without rounding", () => {
-    document.body.innerHTML = renderTopLanguages(langs, { border_radius: "0" });
+    document.body.innerHTML = renderTopLanguages(langs, {
+      border_radius: "0",
+      locale: "en",
+    });
     expect(document.querySelector("rect")).toHaveAttribute("rx", "0");
-    document.body.innerHTML = renderTopLanguages(langs, {});
+    document.body.innerHTML = renderTopLanguages(langs, { locale: "en" });
     expect(document.querySelector("rect")).toHaveAttribute("rx", "4.5");
   });
 
   it("should render langs with specified langs_count", async () => {
     options = {
       langs_count: 1,
+      locale: "en",
     };
     document.body.innerHTML = renderTopLanguages(langs, { ...options });
     expect(queryAllByTestId(document.body, "lang-name").length).toBe(
@@ -246,6 +262,7 @@ describe("Test renderTopLanguages", () => {
     options = {
       hide: ["HTML"],
       langs_count: 2,
+      locale: "en",
     };
     document.body.innerHTML = renderTopLanguages(langs, { ...options });
     expect(queryAllByTestId(document.body, "lang-name").length).toBe(

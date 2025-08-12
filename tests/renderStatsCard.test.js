@@ -1,4 +1,3 @@
-require("@testing-library/jest-dom");
 const cssToObject = require("css-to-object");
 const renderStatsCard = require("../src/cards/stats-card");
 
@@ -21,7 +20,7 @@ describe("Test renderStatsCard", () => {
   };
 
   it("should render correctly", () => {
-    document.body.innerHTML = renderStatsCard(stats);
+    document.body.innerHTML = renderStatsCard(stats, { locale: "en" });
 
     expect(document.getElementsByClassName("header")[0].textContent).toBe(
       "Anurag Hazra's GitHub Stats",
@@ -40,13 +39,19 @@ describe("Test renderStatsCard", () => {
   });
 
   it("should have proper name apostrophe", () => {
-    document.body.innerHTML = renderStatsCard({ ...stats, name: "Anil Das" });
+    document.body.innerHTML = renderStatsCard(
+      { ...stats, name: "Anil Das" },
+      { locale: "en" },
+    );
 
     expect(document.getElementsByClassName("header")[0].textContent).toBe(
       "Anil Das' GitHub Stats",
     );
 
-    document.body.innerHTML = renderStatsCard({ ...stats, name: "Felix" });
+    document.body.innerHTML = renderStatsCard(
+      { ...stats, name: "Felix" },
+      { locale: "en" },
+    );
 
     expect(document.getElementsByClassName("header")[0].textContent).toBe(
       "Felix' GitHub Stats",
@@ -56,6 +61,7 @@ describe("Test renderStatsCard", () => {
   it("should hide individual stats", () => {
     document.body.innerHTML = renderStatsCard(stats, {
       hide: ["issues", "prs", "contribs"],
+      locale: "en",
     });
 
     expect(
@@ -70,13 +76,16 @@ describe("Test renderStatsCard", () => {
   });
 
   it("should hide_rank", () => {
-    document.body.innerHTML = renderStatsCard(stats, { hide_rank: true });
+    document.body.innerHTML = renderStatsCard(stats, {
+      hide_rank: true,
+      locale: "en",
+    });
 
     expect(queryByTestId(document.body, "rank-circle")).not.toBeInTheDocument();
   });
 
   it("should render default colors properly", () => {
-    document.body.innerHTML = renderStatsCard(stats);
+    document.body.innerHTML = renderStatsCard(stats, { locale: "en" });
 
     const styleTag = document.querySelector("style");
     const stylesObject = cssToObject(styleTag.textContent);
@@ -102,7 +111,10 @@ describe("Test renderStatsCard", () => {
       bg_color: "252525",
     };
 
-    document.body.innerHTML = renderStatsCard(stats, { ...customColors });
+    document.body.innerHTML = renderStatsCard(stats, {
+      ...customColors,
+      locale: "en",
+    });
 
     const styleTag = document.querySelector("style");
     const stylesObject = cssToObject(styleTag.innerHTML);
@@ -124,6 +136,7 @@ describe("Test renderStatsCard", () => {
     document.body.innerHTML = renderStatsCard(stats, {
       title_color: "5a0",
       theme: "radical",
+      locale: "en",
     });
 
     const styleTag = document.querySelector("style");
@@ -146,6 +159,7 @@ describe("Test renderStatsCard", () => {
     Object.keys(themes).forEach((name) => {
       document.body.innerHTML = renderStatsCard(stats, {
         theme: name,
+        locale: "en",
       });
 
       const styleTag = document.querySelector("style");
@@ -170,6 +184,7 @@ describe("Test renderStatsCard", () => {
       title_color: "invalid color",
       text_color: "invalid color",
       theme: "radical",
+      locale: "en",
     });
 
     const styleTag = document.querySelector("style");
@@ -191,6 +206,7 @@ describe("Test renderStatsCard", () => {
   it("should render icons correctly", () => {
     document.body.innerHTML = renderStatsCard(stats, {
       show_icons: true,
+      locale: "en",
     });
 
     expect(queryAllByTestId(document.body, "icon")[0]).toBeDefined();
@@ -201,7 +217,10 @@ describe("Test renderStatsCard", () => {
   });
 
   it("should not have icons if show_icons is false", () => {
-    document.body.innerHTML = renderStatsCard(stats, { show_icons: false });
+    document.body.innerHTML = renderStatsCard(stats, {
+      show_icons: false,
+      locale: "en",
+    });
 
     expect(queryAllByTestId(document.body, "icon")[0]).not.toBeDefined();
     expect(queryByTestId(document.body, "stars")).toBeDefined();
@@ -213,6 +232,7 @@ describe("Test renderStatsCard", () => {
   it("should auto resize if hide_rank is true", () => {
     document.body.innerHTML = renderStatsCard(stats, {
       hide_rank: true,
+      locale: "en",
     });
 
     expect(
@@ -224,6 +244,7 @@ describe("Test renderStatsCard", () => {
     document.body.innerHTML = renderStatsCard(stats, {
       hide_rank: true,
       custom_title: "Hello world",
+      locale: "en",
     });
 
     expect(
@@ -245,7 +266,7 @@ describe("Test renderStatsCard", () => {
       document.querySelector(
         'g[transform="translate(0, 25)"]>.stagger>.stat.bold',
       ).textContent,
-    ).toMatchInlineSnapshot(`"累计提交数（commit） (2021):"`);
+    ).toMatchInlineSnapshot(`"累计提交数（commit） (2025):"`);
     expect(
       document.querySelector(
         'g[transform="translate(0, 50)"]>.stagger>.stat.bold',
@@ -264,9 +285,12 @@ describe("Test renderStatsCard", () => {
   });
 
   it("should render without rounding", () => {
-    document.body.innerHTML = renderStatsCard(stats, { border_radius: "0" });
+    document.body.innerHTML = renderStatsCard(stats, {
+      border_radius: "0",
+      locale: "en",
+    });
     expect(document.querySelector("rect")).toHaveAttribute("rx", "0");
-    document.body.innerHTML = renderStatsCard(stats, {});
+    document.body.innerHTML = renderStatsCard(stats, { locale: "en" });
     expect(document.querySelector("rect")).toHaveAttribute("rx", "4.5");
   });
 });
