@@ -421,6 +421,51 @@ NOTE: Since [#58](https://github.com/anuraghazra/github-readme-stats/pull/58) we
 
 </details>
 
+## 🚀 Registro de Atualizações e Modernização (Changelog & Passo a Passo)
+
+Este repositório foi modernizado com foco em segurança, estabilidade de runtime, garantia de qualidade, automação de CI/CD e suporte a novos temas modernos:
+
+### 1. Pesquisa e Diagnóstico Técnico
+- Realizada pesquisa das melhores práticas da comunidade (2025/2026), identificando que o upstream original congelou novos temas e que a recomendação atual envolve instâncias auto-hospedadas na Vercel com Node moderno (20/22+ LTS), otimização de cabeçalhos de cache contra rate limits e suíte de testes Jest atualizada.
+
+### 2. Abertura e Gestão de Issues pelo Git (`gh issue`)
+Issues formais foram criadas e resolvidas no GitHub para rastreamento transparente de cada etapa:
+- [Issue #1](https://github.com/ericcleptonsilva/my-github-readme-stats/issues/1): *Atualização e Modernização de Dependências e Suporte ao Node 22 LTS* (Resolvida).
+- [Issue #2](https://github.com/ericcleptonsilva/my-github-readme-stats/issues/2): *Implementação de Pipeline de CI com GitHub Actions* (Resolvida).
+- [Issue #3](https://github.com/ericcleptonsilva/my-github-readme-stats/issues/3): *Adição de Novos Temas Modernos e Otimização de Headers de Cache na API* (Resolvida).
+
+### 3. Modernização de Dependências e Suporte a Node 22 LTS
+- **Atualização do ecossistema de dependências**:
+  - `axios`: Atualizado para a versão segura `1.7.9` e movido para `dependencies` de produção (essencial para runtime Serverless na Vercel).
+  - `jest` e `jest-environment-jsdom`: Atualizados para `29.7.0`.
+  - `dotenv`: Atualizado para `16.4.5`.
+  - `husky`: Atualizado para a versão moderna `9.0.11`.
+  - `prettier`: Atualizado para a versão `3.2.5`.
+  - `@testing-library/jest-dom` e `@testing-library/dom`: Atualizados para `6.4.2` e `9.3.4`.
+- **Correção da Suíte de Testes**:
+  - Ajustado o teste `tests/renderStatsCard.test.js` para usar cálculo dinâmico de ano (`new Date().getFullYear()`), garantindo perenidade para 2026+.
+  - Substituído o matcher depreciado `.toBeEmpty()` por `.toBeEmptyDOMElement()` em `tests/utils.test.js`.
+  - Atualizados snapshots e obtida **aprovação em 100% dos testes** (15 suítes, 105 testes passando com mais de 92% de cobertura de código).
+
+### 4. Criação de Pipeline de CI/CD no GitHub Actions
+- Criado o arquivo `.github/workflows/ci.yml` configurado com:
+  - `actions/checkout@v4` e `actions/setup-node@v4` com cache de dependências npm.
+  - Matriz de testes automatizada para as versões Node.js `20.x` e `22.x` LTS.
+  - Execução automática de testes com cobertura (`npm test`) e verificação de estilo com Prettier (`npm run format:check`) em cada push e pull request para a branch `master`.
+
+### 5. Inclusão de Temas Modernos
+- Adicionados 6 novos temas modernos em `themes/index.js`:
+  - `catppuccin_mocha` (paleta moderna dark Catppuccin)
+  - `catppuccin_latte` (paleta moderna light Catppuccin)
+  - `rose_pine` (estética minimalista Rose Pine Dark)
+  - `rose_pine_dawn` (versão suave Rose Pine Light)
+  - `tokyonight_storm` (variante profunda do Tokyo Night)
+  - `cyberpunk` (estilo neon de alto contraste)
+- Executado o script `npm run theme-readme-gen` para regenerar automaticamente a tabela e links em `themes/README.md`.
+
+### 6. Otimização de Headers de Cache na API
+- Adicionado cabeçalho `Cache-Control: no-cache, no-store, must-revalidate` em respostas de erro (bloqueio por blacklist, locale inexistente e exceções em `catch`) em `api/index.js`, `api/pin.js`, `api/top-langs.js` e `api/wakatime.js`, prevenindo que CDNs ou navegadores armazenem cartões com erro em cache quando houver indisponibilidade transitória da API do GitHub.
+
 ## :sparkling_heart: Support the project
 
 I open-source almost everything I can, and I try to reply to everyone needing help using these projects. Obviously,
