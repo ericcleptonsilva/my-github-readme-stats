@@ -61,20 +61,15 @@ const renderRepoCard = (repo, options = {}) => {
   });
 
   // returns theme based colors with proper overrides and defaults
-  const {
-    titleColor,
-    textColor,
-    iconColor,
-    bgColor,
-    borderColor,
-  } = getCardColors({
-    title_color,
-    icon_color,
-    text_color,
-    bg_color,
-    border_color,
-    theme,
-  });
+  const { titleColor, textColor, iconColor, bgColor, borderColor } =
+    getCardColors({
+      title_color,
+      icon_color,
+      text_color,
+      bg_color,
+      border_color,
+      theme,
+    });
 
   const totalStars = kFormatter(stargazers.totalCount);
   const totalForks = kFormatter(forkCount);
@@ -153,8 +148,8 @@ const renderRepoCard = (repo, options = {}) => {
       isTemplate
         ? getBadgeSVG(i18n.t("repocard.template"))
         : isArchived
-        ? getBadgeSVG(i18n.t("repocard.archived"))
-        : ""
+          ? getBadgeSVG(i18n.t("repocard.archived"))
+          : ""
     }
 
     <text class="description" x="25" y="-5">

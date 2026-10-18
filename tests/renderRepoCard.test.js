@@ -379,7 +379,7 @@ describe("Test renderRepoCard", () => {
     );
     expect(queryByTestId(document.body, "badge")).toHaveTextContent("模板");
   });
-  
+
   it("should render without rounding", () => {
     document.body.innerHTML = renderRepoCard(data_repo.repository, {
       border_radius: "0",

@@ -61,14 +61,14 @@ const createTextNode = ({
   const cardProgress = hideProgress
     ? null
     : createProgressNode({
-      x: 110,
-      y: 4,
-      progress: percent,
-      color: progressBarColor,
-      width: 220,
-      name: label,
-      progressBarBackgroundColor,
-    });
+        x: 110,
+        y: 4,
+        progress: percent,
+        color: progressBarColor,
+        width: 220,
+        name: label,
+        progressBarBackgroundColor,
+      });
 
   return `
     <g class="stagger" style="animation-delay: ${staggerDelay}ms" transform="translate(25, 0)">
@@ -114,25 +114,20 @@ const renderWakatimeCard = (stats = {}, options = { hide: [] }) => {
   langsCount = clampValue(parseInt(langs_count), 1, langs_count);
 
   // returns theme based colors with proper overrides and defaults
-  const {
-    titleColor,
-    textColor,
-    iconColor,
-    bgColor,
-    borderColor,
-  } = getCardColors({
-    title_color,
-    icon_color,
-    text_color,
-    bg_color,
-    border_color,
-    theme,
-  });
+  const { titleColor, textColor, iconColor, bgColor, borderColor } =
+    getCardColors({
+      title_color,
+      icon_color,
+      text_color,
+      bg_color,
+      border_color,
+      theme,
+    });
 
   const filteredLanguages = languages
     ? languages
-      .filter((language) => language.hours || language.minutes)
-      .slice(0, langsCount)
+        .filter((language) => language.hours || language.minutes)
+        .slice(0, langsCount)
     : [];
 
   // Calculate the card height depending on how many items there are
@@ -186,17 +181,16 @@ const renderWakatimeCard = (stats = {}, options = { hide: [] }) => {
       </mask>
       ${compactProgressBar}
       ${createLanguageTextNode({
-      x: 0,
-      y: 25,
-      langs: filteredLanguages,
-      totalSize: 100,
-    }).join("")}
+        x: 0,
+        y: 25,
+        langs: filteredLanguages,
+        totalSize: 100,
+      }).join("")}
     `;
   } else {
     finalLayout = flexLayout({
       items: filteredLanguages.length
-        ? filteredLanguages
-          .map((language) => {
+        ? filteredLanguages.map((language) => {
             return createTextNode({
               id: language.name,
               label: language.name,
@@ -208,11 +202,11 @@ const renderWakatimeCard = (stats = {}, options = { hide: [] }) => {
             });
           })
         : [
-          noCodingActivityNode({
-            color: textColor,
-            text: i18n.t("wakatimecard.nocodingactivity"),
-          }),
-        ],
+            noCodingActivityNode({
+              color: textColor,
+              text: i18n.t("wakatimecard.nocodingactivity"),
+            }),
+          ],
       gap: lheight,
       direction: "column",
     }).join("");

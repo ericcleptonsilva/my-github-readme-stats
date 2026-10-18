@@ -78,20 +78,15 @@ const renderStatsCard = (stats = {}, options = { hide: [] }) => {
   const lheight = parseInt(line_height, 10);
 
   // returns theme based colors with proper overrides and defaults
-  const {
-    titleColor,
-    textColor,
-    iconColor,
-    bgColor,
-    borderColor,
-  } = getCardColors({
-    title_color,
-    icon_color,
-    text_color,
-    bg_color,
-    border_color,
-    theme,
-  });
+  const { titleColor, textColor, iconColor, bgColor, borderColor } =
+    getCardColors({
+      title_color,
+      icon_color,
+      text_color,
+      bg_color,
+      border_color,
+      theme,
+    });
 
   const apostrophe = ["x", "s"].includes(name.slice(-1).toLocaleLowerCase())
     ? ""
