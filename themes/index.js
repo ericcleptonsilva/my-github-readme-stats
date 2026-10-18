@@ -294,6 +294,48 @@ const themes = {
     text_color: "FFFFFF",
     bg_color: "2C2F33",
   },
+  catppuccin_mocha: {
+    title_color: "89b4fa",
+    icon_color: "cba6f7",
+    text_color: "cdd6f4",
+    bg_color: "1e1e2e",
+    border_color: "313244",
+  },
+  catppuccin_latte: {
+    title_color: "1e66f5",
+    icon_color: "8839ef",
+    text_color: "4c4f69",
+    bg_color: "eff1f5",
+    border_color: "ccd0da",
+  },
+  rose_pine: {
+    title_color: "ebbcba",
+    icon_color: "9ccfd8",
+    text_color: "e0def4",
+    bg_color: "191724",
+    border_color: "26233a",
+  },
+  rose_pine_dawn: {
+    title_color: "d7827e",
+    icon_color: "56949f",
+    text_color: "575279",
+    bg_color: "faf4ed",
+    border_color: "f2e9de",
+  },
+  tokyonight_storm: {
+    title_color: "7aa2f7",
+    icon_color: "bb9af7",
+    text_color: "a9b1d6",
+    bg_color: "24283b",
+    border_color: "414868",
+  },
+  cyberpunk: {
+    title_color: "ffe600",
+    icon_color: "00ffff",
+    text_color: "00ff00",
+    bg_color: "000b1e",
+    border_color: "ff0055",
+  },
 };
 
 module.exports = themes;

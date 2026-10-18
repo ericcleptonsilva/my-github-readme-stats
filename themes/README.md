@@ -30,7 +30,11 @@ Use `?theme=THEME_NAME` parameter like so :-
 | `calm` ![calm][calm] | `flag-india` ![flag-india][flag-india] | `omni` ![omni][omni] |
 | `react` ![react][react] | `jolly` ![jolly][jolly] | `maroongold` ![maroongold][maroongold] |
 | `yeblu` ![yeblu][yeblu] | `blueberry` ![blueberry][blueberry] | `slateorange` ![slateorange][slateorange] |
-| `kacho_ga` ![kacho_ga][kacho_ga] | `outrun` ![outrun][outrun] | [Add your theme][add-theme] |
+| `kacho_ga` ![kacho_ga][kacho_ga] | `outrun` ![outrun][outrun] | `ocean_dark` ![ocean_dark][ocean_dark] |
+| `city_lights` ![city_lights][city_lights] | `github_dark` ![github_dark][github_dark] | `discord_old_blurple` ![discord_old_blurple][discord_old_blurple] |
+| `catppuccin_mocha` ![catppuccin_mocha][catppuccin_mocha] | `catppuccin_latte` ![catppuccin_latte][catppuccin_latte] | `rose_pine` ![rose_pine][rose_pine] |
+| `rose_pine_dawn` ![rose_pine_dawn][rose_pine_dawn] | `tokyonight_storm` ![tokyonight_storm][tokyonight_storm] | `cyberpunk` ![cyberpunk][cyberpunk] |
+| [Add your theme][add-theme] | | |
 
 ## Repo Card
 
@@ -52,7 +56,11 @@ Use `?theme=THEME_NAME` parameter like so :-
 | `calm` ![calm][calm_repo] | `flag-india` ![flag-india][flag-india_repo] | `omni` ![omni][omni_repo] |
 | `react` ![react][react_repo] | `jolly` ![jolly][jolly_repo] | `maroongold` ![maroongold][maroongold_repo] |
 | `yeblu` ![yeblu][yeblu_repo] | `blueberry` ![blueberry][blueberry_repo] | `slateorange` ![slateorange][slateorange_repo] |
-| `kacho_ga` ![kacho_ga][kacho_ga_repo] | `outrun` ![outrun][outrun_repo] | [Add your theme][add-theme] |
+| `kacho_ga` ![kacho_ga][kacho_ga_repo] | `outrun` ![outrun][outrun_repo] | `ocean_dark` ![ocean_dark][ocean_dark_repo] |
+| `city_lights` ![city_lights][city_lights_repo] | `github_dark` ![github_dark][github_dark_repo] | `discord_old_blurple` ![discord_old_blurple][discord_old_blurple_repo] |
+| `catppuccin_mocha` ![catppuccin_mocha][catppuccin_mocha_repo] | `catppuccin_latte` ![catppuccin_latte][catppuccin_latte_repo] | `rose_pine` ![rose_pine][rose_pine_repo] |
+| `rose_pine_dawn` ![rose_pine_dawn][rose_pine_dawn_repo] | `tokyonight_storm` ![tokyonight_storm][tokyonight_storm_repo] | `cyberpunk` ![cyberpunk][cyberpunk_repo] |
+| [Add your theme][add-theme] | | |
 
 
 [default]: https://github-readme-stats.vercel.app/api?username=anuraghazra&show_icons=true&hide=contribs,prs&cache_seconds=86400&theme=default
@@ -100,6 +108,16 @@ Use `?theme=THEME_NAME` parameter like so :-
 [slateorange]: https://github-readme-stats.vercel.app/api?username=anuraghazra&show_icons=true&hide=contribs,prs&cache_seconds=86400&theme=slateorange
 [kacho_ga]: https://github-readme-stats.vercel.app/api?username=anuraghazra&show_icons=true&hide=contribs,prs&cache_seconds=86400&theme=kacho_ga
 [outrun]: https://github-readme-stats.vercel.app/api?username=anuraghazra&show_icons=true&hide=contribs,prs&cache_seconds=86400&theme=outrun
+[ocean_dark]: https://github-readme-stats.vercel.app/api?username=anuraghazra&show_icons=true&hide=contribs,prs&cache_seconds=86400&theme=ocean_dark
+[city_lights]: https://github-readme-stats.vercel.app/api?username=anuraghazra&show_icons=true&hide=contribs,prs&cache_seconds=86400&theme=city_lights
+[github_dark]: https://github-readme-stats.vercel.app/api?username=anuraghazra&show_icons=true&hide=contribs,prs&cache_seconds=86400&theme=github_dark
+[discord_old_blurple]: https://github-readme-stats.vercel.app/api?username=anuraghazra&show_icons=true&hide=contribs,prs&cache_seconds=86400&theme=discord_old_blurple
+[catppuccin_mocha]: https://github-readme-stats.vercel.app/api?username=anuraghazra&show_icons=true&hide=contribs,prs&cache_seconds=86400&theme=catppuccin_mocha
+[catppuccin_latte]: https://github-readme-stats.vercel.app/api?username=anuraghazra&show_icons=true&hide=contribs,prs&cache_seconds=86400&theme=catppuccin_latte
+[rose_pine]: https://github-readme-stats.vercel.app/api?username=anuraghazra&show_icons=true&hide=contribs,prs&cache_seconds=86400&theme=rose_pine
+[rose_pine_dawn]: https://github-readme-stats.vercel.app/api?username=anuraghazra&show_icons=true&hide=contribs,prs&cache_seconds=86400&theme=rose_pine_dawn
+[tokyonight_storm]: https://github-readme-stats.vercel.app/api?username=anuraghazra&show_icons=true&hide=contribs,prs&cache_seconds=86400&theme=tokyonight_storm
+[cyberpunk]: https://github-readme-stats.vercel.app/api?username=anuraghazra&show_icons=true&hide=contribs,prs&cache_seconds=86400&theme=cyberpunk
 
 
 [default_repo]: https://github-readme-stats.vercel.app/api/pin/?username=anuraghazra&repo=github-readme-stats&cache_seconds=86400&theme=default
@@ -147,6 +165,16 @@ Use `?theme=THEME_NAME` parameter like so :-
 [slateorange_repo]: https://github-readme-stats.vercel.app/api/pin/?username=anuraghazra&repo=github-readme-stats&cache_seconds=86400&theme=slateorange
 [kacho_ga_repo]: https://github-readme-stats.vercel.app/api/pin/?username=anuraghazra&repo=github-readme-stats&cache_seconds=86400&theme=kacho_ga
 [outrun_repo]: https://github-readme-stats.vercel.app/api/pin/?username=anuraghazra&repo=github-readme-stats&cache_seconds=86400&theme=outrun
+[ocean_dark_repo]: https://github-readme-stats.vercel.app/api/pin/?username=anuraghazra&repo=github-readme-stats&cache_seconds=86400&theme=ocean_dark
+[city_lights_repo]: https://github-readme-stats.vercel.app/api/pin/?username=anuraghazra&repo=github-readme-stats&cache_seconds=86400&theme=city_lights
+[github_dark_repo]: https://github-readme-stats.vercel.app/api/pin/?username=anuraghazra&repo=github-readme-stats&cache_seconds=86400&theme=github_dark
+[discord_old_blurple_repo]: https://github-readme-stats.vercel.app/api/pin/?username=anuraghazra&repo=github-readme-stats&cache_seconds=86400&theme=discord_old_blurple
+[catppuccin_mocha_repo]: https://github-readme-stats.vercel.app/api/pin/?username=anuraghazra&repo=github-readme-stats&cache_seconds=86400&theme=catppuccin_mocha
+[catppuccin_latte_repo]: https://github-readme-stats.vercel.app/api/pin/?username=anuraghazra&repo=github-readme-stats&cache_seconds=86400&theme=catppuccin_latte
+[rose_pine_repo]: https://github-readme-stats.vercel.app/api/pin/?username=anuraghazra&repo=github-readme-stats&cache_seconds=86400&theme=rose_pine
+[rose_pine_dawn_repo]: https://github-readme-stats.vercel.app/api/pin/?username=anuraghazra&repo=github-readme-stats&cache_seconds=86400&theme=rose_pine_dawn
+[tokyonight_storm_repo]: https://github-readme-stats.vercel.app/api/pin/?username=anuraghazra&repo=github-readme-stats&cache_seconds=86400&theme=tokyonight_storm
+[cyberpunk_repo]: https://github-readme-stats.vercel.app/api/pin/?username=anuraghazra&repo=github-readme-stats&cache_seconds=86400&theme=cyberpunk
 
 
 [add-theme]: https://github.com/anuraghazra/github-readme-stats/edit/master/themes/index.js

@@ -35,6 +35,7 @@ module.exports = async (req, res) => {
   res.setHeader("Content-Type", "image/svg+xml");
 
   if (locale && !isLocaleAvailable(locale)) {
+    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     return res.send(renderError("Something went wrong", "Language not found"));
   }
 
@@ -73,6 +74,7 @@ module.exports = async (req, res) => {
       }),
     );
   } catch (err) {
+    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     return res.send(renderError(err.message, err.secondaryMessage));
   }
 };
